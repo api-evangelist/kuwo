@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: probed
+source: direct HTTP probes of kuwo.cn / www.kuwo.cn (2026-07-19)
+summary: >-
+  No .well-known documents could be retrieved. Every request to the kuwo.cn
+  apex and www host failed at the TCP layer (connection timeout to :443), so no
+  path returned an HTTP status at all. DNS resolves normally, so this is
+  network reachability — Kuwo is a China-hosted consumer service that appears
+  to be geo/firewall restricted from the probing network — and NOT evidence
+  that these documents are absent. Re-run this probe from a network with China
+  reachability before recording any of these as unpublished.
+hosts_probed:
+- kuwo.cn
+- www.kuwo.cn
+probes:
+- path: /.well-known/security.txt
+  status: null
+  result: connection timeout
+  file: null
+- path: /.well-known/openid-configuration
+  status: null
+  result: connection timeout
+  file: null
+- path: /.well-known/oauth-authorization-server
+  status: null
+  result: connection timeout
+  file: null
+- path: /.well-known/api-catalog
+  status: null
+  result: connection timeout
+  file: null
+- path: /.well-known/ai-plugin.json
+  status: null
+  result: connection timeout
+  file: null
+- path: /llms.txt
+  status: null
+  result: connection timeout
+  file: null
+- path: /robots.txt
+  status: null
+  result: connection timeout
+  file: null

@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml hosts (2026-07-19)
+notes: >-
+  The apex kuwo.cn is served as a CNAME to igtmpg1.kuwo.cn (a non-standard apex
+  CNAME / CDN alias). Because the apex is a CNAME, every record-type query
+  returns that CNAME, which an automated probe can misread as a CAA record and
+  as DNSSEC material. Both were re-verified by hand: kuwo.cn publishes NO CAA
+  record and has NO DS record at the .cn zone, so DNSSEC is not enabled. SPF and
+  DMARC were confirmed as genuine TXT records.
+hosts:
+- host: kuwo.cn
+  https: unknown
+  reachable: false
+  note: >-
+    DNS resolves (101.42.133.54, 101.42.130.11 plus IPv6) but TCP/443 connections
+    time out from the probing network. Kuwo is a China-hosted consumer service
+    and appears to be geo/firewall restricted, so TLS and HSTS posture could not
+    be observed. This is a reachability failure, not evidence of missing HTTPS.
+domains:
+- domain: kuwo.cn
+  dnssec: false
+  dnssec_evidence: no DS record at the .cn zone; no DNSKEY at kuwo.cn
+  caa: []
+  caa_evidence: >-
+    dig CAA kuwo.cn returns only the apex CNAME igtmpg1.kuwo.cn; no CAA RRset is
+    published
+  spf: true
+  spf_record: v=spf1 include:spf.mail.qq.com ~all
+  dmarc: true
+  dmarc_policy: none
+  dmarc_record: v=DMARC1;p=none;rua=mailto:mailauth-reports@qq.com
+  mail_note: >-
+    SPF delegates to spf.mail.qq.com and DMARC aggregate reports route to
+    mailauth-reports@qq.com, consistent with Tencent-operated mail.
