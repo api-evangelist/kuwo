@@ -1,19 +1,61 @@
 aid: kuwo
-name: kuwo
-description: kuwo is a company surfaced as a portfolio company of qiming and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/kuwo.png
+name: Kuwo Music
+description: >-
+  Kuwo Music (酷我音乐) is a Chinese online music streaming service, founded in
+  Beijing in 2005, that grew from a desktop music player into one of China's
+  major consumer streaming apps across desktop, web, and mobile. Kuwo merged
+  with Kugou under China Music Corporation, which was subsequently acquired by
+  Tencent Music Entertainment Group, and Kuwo now operates as one of TME's music
+  apps alongside QQ Music and Kugou. Kuwo entered the API Evangelist network as
+  a venture-portfolio lead via Qiming. It is a consumer-facing streaming
+  property rather than an API-first provider, and no public developer program,
+  API documentation, or machine-readable API surface has been verified for it.
 url: https://raw.githubusercontent.com/api-evangelist/kuwo/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - qiming
 x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier-reason: consumer-service-no-verified-public-api
+x-enrichment:
+  last-run: '2026-07-19'
+  outcome: blocked
+  detail: >-
+    Enrichment could not reach the provider. kuwo.cn resolves in DNS but every
+    TCP/443 connection times out from the enrichment network (China-hosted and
+    apparently geo/firewall restricted), so no docs, portal, well-known
+    document, or spec could be fetched. Web search quota for the session was
+    also exhausted, so the SEARCH path was unavailable. Only DNS-layer facts
+    were recoverable. NOTHING here should be read as "the provider does not
+    publish X" — re-run from a network with China reachability.
+  recoverable-next-run:
+  - well-known probes (security.txt, openid-configuration, api-catalog)
+  - developer portal / open platform discovery
+  - TLS + HSTS posture
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
+- Music
+- Streaming
+- Media
+- Entertainment
+- Audio
+- Consumer
+- China
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +63,7 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/kuwo-domain-security.yml
 - type: Website
   url: https://kuwo.cn
